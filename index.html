@@ -50,6 +50,28 @@
       margin-top: 5px;
       font-weight: 400;
     }
+    .header-links {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+    .header-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      transition: color 0.14s, border-color 0.14s;
+    }
+    .header-link:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.6);
+    }
 
     /* ── Grid ── */
     main { flex: 1; }
@@ -70,6 +92,22 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+    }
+
+    /* Full-width card (flights) — horizontal layout */
+    .card-wide {
+      grid-column: 1 / -1;
+      flex-direction: row;
+    }
+    .card-wide .card-preview {
+      width: 58%;
+      height: auto;
+      flex-shrink: 0;
+    }
+    .card-wide .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     /* ── Card preview ── */
@@ -95,8 +133,8 @@
     /* Tableau alternative badge */
     .preview-badge {
       position: absolute;
-      top: 44px;
-      right: 8px;
+      top: 10px;
+      right: 10px;
       background: rgba(255, 200, 50, 0.92);
       color: #7a5300;
       font-size: 9px;
@@ -115,30 +153,6 @@
       flex-direction: column;
       flex: 1;
     }
-
-    /* Tech tags */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 11px;
-    }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 9px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 600;
-      white-space: nowrap;
-      border: 1px solid transparent;
-    }
-    .tag-python  { background: #eef2ff; color: #4338ca; border-color: #c7d2fe; }
-    .tag-api     { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
-    .tag-sqlite  { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
-    .tag-chartjs { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-    .tag-leaflet { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-    .tag-js      { background: #fefce8; color: #a16207; border-color: #fde68a; }
 
     /* Title & description */
     .card-title {
@@ -216,6 +230,13 @@
       }
       header { padding: 28px 16px 22px; }
       header h1 { font-size: 24px; }
+      .card-wide {
+        flex-direction: column;
+      }
+      .card-wide .card-preview {
+        width: 100%;
+        height: 290px;
+      }
     }
   </style>
 </head>
@@ -224,13 +245,21 @@
   <header>
     <h1>my Vizzes</h1>
     <p class="header-sub">data visualizations &amp; interactive dashboards</p>
+    <div class="header-links">
+      <a href="https://github.com/giladct" target="_blank" rel="noopener" class="header-link">
+        ⌥ GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/giladct/" target="_blank" rel="noopener" class="header-link">
+        in LinkedIn
+      </a>
+    </div>
   </header>
 
   <main>
     <section class="grid">
 
-      <!-- ── Card 1: Flight Delays ── -->
-      <article class="card">
+      <!-- ── Row 1: Flight Delays (full width) ── -->
+      <article class="card card-wide">
         <div class="card-preview">
           <img src="flights.png" alt="Flight Delays Dashboard screenshot">
         </div>
@@ -238,8 +267,8 @@
           <h2 class="card-title">Flight Delays Dashboard</h2>
           <p class="card-desc">
             Multi-airport departure delay analysis across TLV, JFK, DXB and YYZ.
-            Data is collected automatically every two hours via the AeroDataBox API
-            and the dashboard refreshes daily — always showing up-to-date delay trends.
+            Data is collected automatically every two hours via the AeroDataBox API —
+            the dashboard refreshes daily, always showing up-to-date delay trends.
           </p>
           <div class="card-links">
             <a href="https://giladct.github.io/flights-delays/" target="_blank" rel="noopener" class="btn btn-primary">
@@ -249,25 +278,40 @@
         </div>
       </article>
 
-      <!-- ── Card 2: CCARCS ── -->
+      <!-- ── Row 2: CCARCS custom app ── -->
       <article class="card">
         <div class="card-preview">
           <img src="ccarcs.png" alt="Canadian Civil Aircraft Register screenshot">
-          <span class="preview-badge">Tableau alternative</span>
+          <span class="preview-badge">Custom-built alternative</span>
         </div>
         <div class="card-content">
           <h2 class="card-title">Canadian Civil Aircraft Register</h2>
           <p class="card-desc">
-            Searchable registry of 37,000+ Canadian civil aircraft. Adds a Leaflet
-            map view, works without login, and loads faster than the public
-            Tableau dashboard it replaces.
+            Searchable registry of 37,000+ Canadian civil aircraft with a Leaflet
+            map view. No login required. Data updates daily via GitHub Actions.
           </p>
           <div class="card-links">
             <a href="https://giladct.github.io/ccarcs/" target="_blank" rel="noopener" class="btn btn-primary">
               → Live Demo
             </a>
-            <a href="https://public.tableau.com/app/profile/gilad8764/viz/CARegister/CanadianCivilAircraftRegister" target="_blank" rel="noopener" class="btn btn-secondary">
-              vs Tableau ↗
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Row 2: CCARCS Tableau version ── -->
+      <article class="card">
+        <div class="card-preview">
+          <img src="tableau.png" alt="Canadian Civil Aircraft Register Tableau dashboard">
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">CA Aircraft Register — Tableau</h2>
+          <p class="card-desc">
+            The original Tableau Public dashboard for the Canadian Civil Aircraft
+            Register — the visualization that inspired the custom-built version above.
+          </p>
+          <div class="card-links">
+            <a href="https://public.tableau.com/app/profile/gilad8764/viz/CARegister/CanadianCivilAircraftRegister" target="_blank" rel="noopener" class="btn btn-primary">
+              → View on Tableau ↗
             </a>
           </div>
         </div>
@@ -279,7 +323,6 @@
   <footer>
     built by <a href="https://github.com/giladct" target="_blank" rel="noopener">giladct</a>
   </footer>
-
 
 <!-- Default Statcounter code for Portfolio
 https://giladct.github.io/ -->
