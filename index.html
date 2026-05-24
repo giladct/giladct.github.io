@@ -74,190 +74,22 @@
 
     /* ── Card preview ── */
     .card-preview {
-      height: 220px;
+      height: 240px;
       position: relative;
       overflow: hidden;
       background: #eef2f7;
       flex-shrink: 0;
     }
-
-    /* Fake browser nav strip */
-    .preview-nav {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 36px;
-      background: var(--navy);
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 6px;
-      z-index: 2;
-    }
-    .nav-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.25);
-      flex-shrink: 0;
-    }
-    .nav-bar {
-      height: 8px;
-      border-radius: 3px;
-      background: rgba(255,255,255,.3);
-      flex: 1;
-      max-width: 160px;
-      margin-left: 6px;
-    }
-
-    /* Preview body */
-    .preview-body {
-      position: absolute;
-      top: 36px; left: 0; right: 0; bottom: 0;
-      padding: 10px 12px 8px;
-      background: #f5f6fa;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    /* Stat tiles row */
-    .preview-stats {
-      display: flex;
-      gap: 6px;
-    }
-    .preview-stat {
-      flex: 1;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 5px 7px;
-      font-size: 9px;
-      color: #888;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-      line-height: 1.3;
-    }
-    .preview-stat strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1.1;
-      letter-spacing: 0;
-      text-transform: none;
-      margin-bottom: 2px;
-    }
-
-    /* ── FLIGHTS preview: bar chart ── */
-    .preview-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 5px;
-      flex: 1;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 8px 10px 4px;
-    }
-    .preview-chart-col {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      height: 100%;
-      justify-content: flex-end;
-    }
-    .preview-bar {
+    .card-preview img {
       width: 100%;
-      border-radius: 2px 2px 0 0;
-      background: var(--accent);
-      opacity: 0.8;
-      min-height: 4px;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      display: block;
+      transition: transform 0.3s ease;
     }
-    .preview-bar-label {
-      font-size: 8px;
-      color: #aaa;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    /* ── CCARCS preview: table + map ── */
-    .preview-two-col {
-      display: flex;
-      gap: 8px;
-      flex: 1;
-      min-height: 0;
-    }
-    .preview-table {
-      flex: 1.3;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .preview-thead {
-      background: #eef2f7;
-      height: 18px;
-      border-bottom: 2px solid var(--border);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      gap: 4px;
-    }
-    .preview-thead-cell {
-      height: 6px;
-      border-radius: 2px;
-      background: #c0c8d4;
-    }
-    .preview-row {
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      gap: 5px;
-      height: 16px;
-      border-bottom: 1px solid #f0f2f5;
-      flex-shrink: 0;
-    }
-    .preview-cell {
-      height: 5px;
-      border-radius: 2px;
-      background: #dde1e7;
-    }
-
-    .preview-map {
-      flex: 1;
-      background: linear-gradient(145deg, #cde3ed 0%, #b8d5e4 55%, #a8c8d8 100%);
-      border: 1px solid #a8c8d8;
-      border-radius: 5px;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Faint province boundary hints */
-    .preview-map::before {
-      content: '';
-      position: absolute;
-      top: 35%; left: 0; right: 0;
-      height: 1px;
-      background: rgba(255,255,255,.3);
-    }
-    .preview-map::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0; left: 55%;
-      width: 1px;
-      background: rgba(255,255,255,.25);
-    }
-    .map-dot {
-      position: absolute;
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--navy);
-      opacity: 0.65;
-      transform: translate(-50%, -50%);
+    .card:hover .card-preview img {
+      transform: scale(1.03);
     }
 
     /* Tableau alternative badge */
@@ -400,49 +232,7 @@
       <!-- ── Card 1: Flight Delays ── -->
       <article class="card">
         <div class="card-preview">
-          <div class="preview-nav">
-            <div class="nav-dot"></div>
-            <div class="nav-dot"></div>
-            <div class="nav-dot"></div>
-            <div class="nav-bar"></div>
-          </div>
-          <div class="preview-body">
-            <div class="preview-stats">
-              <div class="preview-stat"><strong>4</strong>airports</div>
-              <div class="preview-stat"><strong>50K+</strong>flights</div>
-              <div class="preview-stat"><strong>2 hr</strong>refresh</div>
-            </div>
-            <div class="preview-chart">
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:42%"></div>
-                <div class="preview-bar-label">TLV</div>
-              </div>
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:68%"></div>
-                <div class="preview-bar-label">JFK</div>
-              </div>
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:55%"></div>
-                <div class="preview-bar-label">DXB</div>
-              </div>
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:78%"></div>
-                <div class="preview-bar-label">YYZ</div>
-              </div>
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:34%"></div>
-                <div class="preview-bar-label">TLV</div>
-              </div>
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:61%"></div>
-                <div class="preview-bar-label">JFK</div>
-              </div>
-              <div class="preview-chart-col">
-                <div class="preview-bar" style="height:49%"></div>
-                <div class="preview-bar-label">DXB</div>
-              </div>
-            </div>
-          </div>
+          <img src="flights.png" alt="Flight Delays Dashboard screenshot">
         </div>
         <div class="card-content">
           <div class="tags">
@@ -469,76 +259,8 @@
       <!-- ── Card 2: CCARCS ── -->
       <article class="card">
         <div class="card-preview">
-          <div class="preview-nav">
-            <div class="nav-dot"></div>
-            <div class="nav-dot"></div>
-            <div class="nav-dot"></div>
-            <div class="nav-bar"></div>
-          </div>
+          <img src="ccarcs.png" alt="Canadian Civil Aircraft Register screenshot">
           <span class="preview-badge">Tableau alternative</span>
-          <div class="preview-body">
-            <div class="preview-stats">
-              <div class="preview-stat"><strong>37K+</strong>aircraft</div>
-              <div class="preview-stat"><strong>37 MB</strong>database</div>
-              <div class="preview-stat"><strong>no</strong>login</div>
-            </div>
-            <div class="preview-two-col">
-              <!-- Faux table -->
-              <div class="preview-table">
-                <div class="preview-thead">
-                  <div class="preview-thead-cell" style="width:22px"></div>
-                  <div class="preview-thead-cell" style="width:36px"></div>
-                  <div class="preview-thead-cell" style="width:28px"></div>
-                </div>
-                <div class="preview-row">
-                  <div class="preview-cell" style="width:18px"></div>
-                  <div class="preview-cell" style="width:44px; background:#bfdbfe;"></div>
-                  <div class="preview-cell" style="width:24px"></div>
-                </div>
-                <div class="preview-row">
-                  <div class="preview-cell" style="width:20px"></div>
-                  <div class="preview-cell" style="width:38px"></div>
-                  <div class="preview-cell" style="width:30px"></div>
-                </div>
-                <div class="preview-row">
-                  <div class="preview-cell" style="width:15px"></div>
-                  <div class="preview-cell" style="width:42px"></div>
-                  <div class="preview-cell" style="width:22px"></div>
-                </div>
-                <div class="preview-row">
-                  <div class="preview-cell" style="width:22px"></div>
-                  <div class="preview-cell" style="width:35px"></div>
-                  <div class="preview-cell" style="width:28px"></div>
-                </div>
-                <div class="preview-row">
-                  <div class="preview-cell" style="width:17px"></div>
-                  <div class="preview-cell" style="width:40px"></div>
-                  <div class="preview-cell" style="width:26px"></div>
-                </div>
-              </div>
-              <!-- Faux Canada map -->
-              <div class="preview-map">
-                <!-- BC/Alberta cluster -->
-                <div class="map-dot" style="top:45%;left:20%"></div>
-                <div class="map-dot" style="top:48%;left:25%"></div>
-                <div class="map-dot" style="top:52%;left:22%"></div>
-                <div class="map-dot" style="top:42%;left:28%"></div>
-                <!-- Prairies -->
-                <div class="map-dot" style="top:50%;left:38%"></div>
-                <div class="map-dot" style="top:54%;left:42%"></div>
-                <!-- Ontario/Quebec density -->
-                <div class="map-dot" style="top:55%;left:62%"></div>
-                <div class="map-dot" style="top:58%;left:65%"></div>
-                <div class="map-dot" style="top:52%;left:68%"></div>
-                <div class="map-dot" style="top:60%;left:70%"></div>
-                <div class="map-dot" style="top:56%;left:74%"></div>
-                <div class="map-dot" style="top:62%;left:67%"></div>
-                <!-- Maritimes -->
-                <div class="map-dot" style="top:58%;left:82%"></div>
-                <div class="map-dot" style="top:62%;left:85%"></div>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="card-content">
           <div class="tags">
