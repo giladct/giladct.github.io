@@ -84,6 +84,14 @@
       padding: 0 24px;
     }
 
+    /* ── Row separator ── */
+    .row-divider {
+      grid-column: 1 / -1;
+      height: 0;
+      border-top: 1px solid var(--border);
+      margin: 4px 0;
+    }
+
     /* ── Card shell ── */
     .card {
       background: var(--white);
@@ -274,6 +282,29 @@
           </div>
         </div>
       </article>
+
+      <!-- ── Row 1b: TLV House Prices ── -->
+      <article class="card card-wide">
+        <div class="card-preview">
+          <img src="tlv-houses.JPG" alt="TLV House Prices Dashboard screenshot">
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Tel Aviv House Prices</h2>
+          <p class="card-desc">
+            Interactive explorer of residential real-estate transactions in the Tel Aviv
+            district. Browse price trends by neighbourhood, property type, and deal date
+            — built on publicly available Israeli government data.
+          </p>
+          <div class="card-links">
+            <a href="https://giladct.github.io/tlv-house-prices/" target="_blank" rel="noopener" class="btn btn-primary">
+              → Live View
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Row separator ── -->
+      <div class="row-divider"></div>
 
       <!-- ── Row 2: CCARCS custom app ── -->
       <article class="card">
